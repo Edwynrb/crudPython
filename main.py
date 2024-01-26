@@ -1,9 +1,6 @@
-
 #the third step
 from BD.conexion import DAO
 import functions
-
-
 def mainMenu():
     Continue=True
     while(Continue):
@@ -27,10 +24,34 @@ def mainMenu():
             else:
                 rightChoice = True
                 executeOption(option)
+     
+            
+            
+            
                 
-                    
 def executeOption(option):
-    print(option)
+    dao = DAO()
+   
+    if option == 1:
+        try:
+            courses = dao.listCourses()  
+            if len(courses) > 0:
+               functions.listCourses(courses)
+            else:
+                print("Courses empty.....")  
+        except:
+            print("an error has occurred!")
+    
+    elif option == 2:
+        print("REGISTER COURSES")
+        
+    elif option == 3:
+        print(" UPDATE COURSES")
+        
+    elif option == 4:
+        print("DELETE COURSES")
+    else:
+        print("this option is not correct: ")
     
 mainMenu()
     
