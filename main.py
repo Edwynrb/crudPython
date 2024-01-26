@@ -34,13 +34,14 @@ def executeOption(option):
    
     if option == 1:
         try:
-            courses = dao.listCourses()  
+            courses = dao.showCourses()  
+
             if len(courses) > 0:
                functions.listCourses(courses)
             else:
                 print("Courses empty.....")  
-        except:
-            print("an error has occurred!")
+        except Exception as e:
+            print(f"an error has occurred!{e}")
     
     elif option == 2:
         print("REGISTER COURSES")

@@ -14,17 +14,16 @@ class DAO():
                 db="university"       
             )
         except Error as ex:
-            print("Error in conection with db")
-            
+            print("Error al intentar la conexión: {0}".format(ex))            
 # Second step, create method to view all courses
 
-def listCourses(self): 
-    if self.conexion.is_connected():
-       try:
-           cursor=self.conexion.cursor()
-           cursor.execute("SELECT * FROM courses ORDER BY name ASC")
-           result=cursor.fetchall()
-           return result
-       except Error as ex:
-           print("Error in connection with db")
-    
+
+    def showCourses(self): 
+         if self.conexion.is_connected():  
+            try:
+                 cursor = self.conexion.cursor()
+                 cursor.execute("SELECT * FROM courses ORDER BY name ASC")
+                 result=cursor.fetchall()
+                 return result
+            except Error as ex:
+                print("Error al intentar la conexión: {0}".format(ex))
